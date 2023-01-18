@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--root menu-->
+    <menuitem id="crm_discount_menu_root" name="Discount" sequence="5" parent="crm.crm_menu_root"/>
+
+    <!--customer contract-->
+    <menuitem id="crm_discount_menu_customer_contract_list" name="Contract" sequence="1"
+              parent="crm_discount_menu_root"
+              action="action_crm_customer_contract_list"/>
+
+    <!--customer billing discount-->
+    <menuitem id="crm_discount_menu_customer_discount_list" name="Billing Config" sequence="2"
+              parent="crm_discount_menu_root"
+              action="action_crm_customer_billing_config_list"/>
+</odoo>

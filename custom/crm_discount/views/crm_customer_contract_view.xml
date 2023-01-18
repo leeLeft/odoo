@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!--crm_customer_contract-->
+    <record model="ir.ui.view" id="crm_customer_contract_form_view">
+        <field name="name">Contract Save Form</field>
+        <field name="model">crm.customer.contract</field>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <form>
+                <header></header>
+                <sheet>
+                    <group name="group_top">
+                        <group name="group_left">
+                            <field name="company_id">Company</field>
+                            <field name="account_id" readonly="True" force_save="1">Account ID</field>
+                        </group>
+                        <group name="group-right">
+                            <field name="expire_date" readonly="False">ExpireDate</field>
+                            <field name="state">State</field>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="crm_customer_contract_tree_view">
+        <field name="name">Contract List Form</field>
+        <field name="model">crm.customer.contract</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state == 'ENABLE'">
+                <field name="id"/>
+                <field name="company_id"/>
+                <field name="account_id"/>
+                <field name="expire_date"/>
+                <field name="state"/>
+                <field name="create_uid"/>
+                <field name="create_date"/>
+                <field name="write_uid"/>
+                <field name="write_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="crm_customer_contract_search_view">
+        <field name="name">Contract Search Form</field>
+        <field name="model">crm.customer.contract</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="state"/>
+                <filter name="ENABLE" domain="[('state','=','ENABLE')]"/>
+                <filter name="UNABLE" domain="[('state','=','DISABLE')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_crm_customer_contract_list">
+        <field name="name">Contract List</field>
+        <field name="res_model">crm.customer.contract</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--crm customer contract-->
+</odoo>
