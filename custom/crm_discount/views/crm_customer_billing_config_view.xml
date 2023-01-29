@@ -13,7 +13,7 @@
                     <group name="group_top">
                         <group name="group_left">
                             <field name="company_id">Company</field>
-                            <field name="account_id" readonly="True" force_save="1">Account ID</field>
+                            <field name="account_biz_id">Account Biz ID</field>
                         </group>
                         <group name="group-right">
                             <field name="month_upper_limit">Month upper limit</field>
@@ -32,7 +32,7 @@
             <tree decoration-info="state == 'ENABLE'">
                 <field name="id"/>
                 <field name="company_id"/>
-                <field name="account_id"/>
+                <field name="account_biz_id"/>
                 <field name="month_upper_limit"/>
                 <field name="state"/>
                 <field name="create_uid"/>

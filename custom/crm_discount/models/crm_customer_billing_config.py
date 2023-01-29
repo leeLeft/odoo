@@ -16,17 +16,11 @@ class BillingConfigModel(models.Model):
     company_id = fields.Many2one('res.partner', string="Company",
                                  domain="[('is_company', '=', True)]",
                                  required=True)
-    account_id = fields.Char('Account ID', required=True)
+    account_biz_id = fields.Char('Account Biz ID', required=True)
     month_upper_limit = fields.Long('Month upper limit', default=0)
     state = fields.Selection([('ENABLE', 'ENABLE'), ('DISABLE', 'DISABLE')], 'State', default='DISABLE')
 
     # methods
-    @api.onchange('company_id')
-    def _user_id_onchange(self):
-        for record in self:
-            accountId = str(record.company_id.id)
-            record.account_id = accountId
-
     @api.model_create_multi
     def create(self, vals_list):
         for record in vals_list:

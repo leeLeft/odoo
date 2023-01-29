@@ -21,7 +21,7 @@ class ContractModel(models.Model):
     company_id = fields.Many2one('res.partner', string="Company",
                                  domain="[('is_company', '=', True)]",
                                  required=True)
-    account_id = fields.Char('Account ID', required=True, index=True)
+    account_biz_id = fields.Char('Account Biz ID', required=True, index=True)
     expire_date = fields.Date('Expire date', store=False, default=lambda s: fields.Date.context_today(s),
                               compute="_compute_expire_date")
     expire_at = fields.Long('Expire at', required=True, invisible=True)
@@ -34,11 +34,6 @@ class ContractModel(models.Model):
             if record.expire_at:
                 date = datetime.datetime.fromtimestamp(record.expire_at)
                 record.expire_date = date
-
-    @api.onchange('company_id')
-    def _on_user_id_change(self):
-        for record in self:
-            record.account_id = str(record.company_id.id)
 
     @api.model_create_multi
     def create(self, vals_list):

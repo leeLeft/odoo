@@ -40,7 +40,8 @@ class Lead2OpportunityPartner(models.TransientModel):
         compute='_compute_duplicated_lead_ids', readonly=False, store=True, compute_sudo=False)
     partner_id = fields.Many2one(
         'res.partner', 'Customer',
-        compute='_compute_partner_id', readonly=False, store=True, compute_sudo=False)
+        compute='_compute_partner_id', readonly=False, store=True, compute_sudo=False,
+        domain="[('is_company','=',True)]")
     user_id = fields.Many2one(
         'res.users', 'Salesperson',
         compute='_compute_user_id', readonly=False, store=True, compute_sudo=False)
@@ -55,7 +56,8 @@ class Lead2OpportunityPartner(models.TransientModel):
     def _compute_name(self):
         for convert in self:
             if not convert.name:
-                convert.name = 'merge' if convert.duplicated_lead_ids and len(convert.duplicated_lead_ids) >= 2 else 'convert'
+                convert.name = 'merge' if convert.duplicated_lead_ids and len(
+                    convert.duplicated_lead_ids) >= 2 else 'convert'
 
     @api.depends('lead_id')
     def _compute_action(self):
