@@ -1862,6 +1862,8 @@ class Lead(models.Model):
         }
         if self.lang_id:
             res['lang'] = self.lang_id.code
+        if self.account_biz_id:
+            res['account_biz_id'] = self.account_biz_id
         return res
 
     # ------------------------------------------------------------

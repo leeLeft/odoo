@@ -12,11 +12,11 @@
                 <sheet>
                     <group name="group_top">
                         <group name="group_left">
-                            <field name="company_id">Company</field>
-                            <field name="account_biz_id">Account Biz ID</field>
+                            <field name="company_id" required="1">Company</field>
+                            <field name="account_biz_id" force_save="1" attrs="{'readonly':True}">Account Biz ID</field>
                         </group>
                         <group name="group-right">
-                            <field name="expire_date" readonly="False">ExpireDate</field>
+                            <field name="expire_date">ExpireDate</field>
                             <field name="state">State</field>
                         </group>
                     </group>
